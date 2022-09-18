@@ -1,9 +1,14 @@
-const Users = require('../models/users.models')
+const Users= require('../models/users.models')
 
 
-const addUser = async (req,res)=>{
+const addUser =  (req, res)=>{
 
-    console.log(req.body)
+   try {
+         Users.create(req, res)
+        res.status(201).json({message: 'users add with succes'})
+   } catch (error) {
+    console.log(error.message)
+   }
 }
 
 const findUser = async (req,res)=>{
